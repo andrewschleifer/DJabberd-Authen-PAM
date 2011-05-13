@@ -3,6 +3,8 @@ use strict;
 use base 'DJabberd::Authen';
 use Authen::PAM      qw[:constants];
 use DJabberd::Log;
+
+our $VERSION = '0.2';
 our $logger = DJabberd::Log->get_logger;
 
 sub log {
@@ -107,3 +109,22 @@ sub check_cleartext {
 }
 
 1;
+
+__END__
+
+=head1 NAME
+
+DJabberd::Authen::PAM - authenticate jabber users against a PAM service
+
+=head1 SYNOPSIS
+
+<Vhost yourserver.com>
+...
+	<Plugin DJabberd::Authen::PAM>
+		Service system-auth
+	</Plugin>
+...
+</VHost>
+
+The service defaults to "ssh" if none is specified.
+
